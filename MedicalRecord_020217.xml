@@ -1,0 +1,1591 @@
+<?xml version="1.0" encoding="UTF-8"?><Db flnm="MedicalRecord_020217" nm="MedicalRecord" ver="1.3.4">
+  <VerLbl/>
+  <VerNotes/>
+  <DefTblOpts/>
+  <DocFolder>\Users\mottaman\PROJECTS\MICRO_MEDICAL\DATABASE</DocFolder>
+  <Sch Cm="" nm="mr_admin">
+    <Tbl UsSo="1" nm="mr_attributes">
+      <TblOpts>WITHOUT OIDS</TblOpts>
+      <Pk ClNs="cd_attribute" nm="pk_mr_attributes"/>
+      <Cl au="0" df="" nm="cd_attribute" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="50" sc="null" sg="1" un="0"/>
+        <Cm>Atribute key</Cm>
+      </Cl>
+      <Cl au="0" df="" nm="cd_status" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="50" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="cd_attribute_type" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="50" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="cd_attribute_level" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="50" sc="null" sg="1" un="0"/>
+        <Cm>Attribute Level. 
+
+Availables values (For now):
+D. Doctor,
+H. Hospital
+</Cm>
+      </Cl>
+      <Cl au="0" df="" nm="ds_short_attribute" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="150" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="ds_long_attribute" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="250" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="cd_attribute_format" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="50" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="sw_required" nu="0">
+        <DT arr="0" ds="Boolean" en="" id="16" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="maximum_length" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="precision" nu="1">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="user_updated" nu="1">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="50" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="date_updated" nu="1">
+        <DT arr="0" ds="Date" en="" id="91" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="user_inserted" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="50" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="date_inserted" nu="0">
+        <DT arr="0" ds="Date" en="" id="91" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <UniqueConstraints/>
+      <SchTrHis/>
+    </Tbl>
+    <Tbl UsSo="1" nm="mr_audit">
+      <TblOpts>WITHOUT OIDS</TblOpts>
+      <Pk ClNs="id_audit" nm="pkmr_audit"/>
+      <Cl au="0" df="" nm="id_audit" nu="0">
+        <DT arr="0" ds="BigInt" en="" id="-5" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="user_audit" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="70" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="cd_table" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="50" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="type_transaction" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="50" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="date_hour" nu="0">
+        <DT arr="0" ds="DateTime" en="" id="700" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="reg_tabid" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="50" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="current_value" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="500" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="previous_value " nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="500" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="name_field" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="50" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Fk deAc="3" nm="fk_mr_audit_mr_audit_table" prLkCl="cd_table" upAc="3">
+        <PrTb mn="0" nm="mr_audit_table" oe="1" sch="mr_admin" zr="0"/>
+        <CdTb mn="1" nm="mr_audit" oe="0" sch="mr_admin" zr="1"/>
+        <ClPr cdCl="cd_table" prCl="cd_table"/>
+      </Fk>
+      <UniqueConstraints/>
+      <SchTrHis/>
+    </Tbl>
+    <Tbl UsSo="1" nm="mr_audit_table">
+      <TblOpts>WITHOUT OIDS</TblOpts>
+      <Pk ClNs="cd_table" nm="pkmr_audit_table"/>
+      <Cl au="0" df="" nm="cd_table" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="50" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="date_creation" nu="0">
+        <DT arr="0" ds="DateTime" en="" id="700" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="date_updated" nu="0">
+        <DT arr="0" ds="DateTime" en="" id="700" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <UniqueConstraints/>
+      <SchTrHis/>
+    </Tbl>
+    <Tbl UsSo="1" nm="mr_catalogue_structures">
+      <TblOpts>WITHOUT OIDS</TblOpts>
+      <Cl au="0" df="" nm="cd_table" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="30" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="key_label" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="50" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="id_order" nu="0">
+        <DT arr="0" ds="BigInt" en="" id="-5" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="ds_label" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="50" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="cd_format" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="50" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="long_max" nu="0">
+        <DT arr="0" ds="Numeric" en="" id="2" ln="3" sc="0" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="precision" nu="0">
+        <DT arr="0" ds="Numeric" en="" id="2" ln="5" sc="0" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="cd_type_column" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="50" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="created_for" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="70" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="date_creation" nu="0">
+        <DT arr="0" ds="DateTime" en="" id="700" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="updated_for" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="70" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="date_updated" nu="0">
+        <DT arr="0" ds="DateTime" en="" id="700" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Fk deAc="3" nm="fk_mr_catalogue_structures_mr_catalogues" prLkCl="cd_table" upAc="3">
+        <PrTb mn="0" nm="mr_catalogues" oe="1" sch="mr_admin" zr="0"/>
+        <CdTb mn="1" nm="mr_catalogue_structures" oe="0" sch="mr_admin" zr="1"/>
+        <ClPr cdCl="cd_table" prCl="cd_table"/>
+      </Fk>
+      <UniqueConstraints/>
+      <SchTrHis/>
+    </Tbl>
+    <Tbl UsSo="1" nm="mr_catalogues">
+      <TblOpts>WITHOUT OIDS</TblOpts>
+      <Pk ClNs="cd_table" nm="pkmr_catalogues"/>
+      <Cl au="0" df="" nm="cd_table" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="30" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="ds_catalogue" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="50" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="for_catalogue" nu="0">
+        <DT arr="0" ds="Float" en="" id="6" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="no_keys " nu="0">
+        <DT arr="0" ds="Numeric" en="" id="2" ln="1" sc="0" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="no_attributes" nu="0">
+        <DT arr="0" ds="Numeric" en="" id="2" ln="2" sc="0" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="sw_visible" nu="0">
+        <DT arr="0" ds="Char" en="" id="1" ln="1" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="sw_analysis" nu="0">
+        <DT arr="0" ds="Char" en="" id="1" ln="1" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="sw_modifiable" nu="0">
+        <DT arr="0" ds="Char" en="" id="1" ln="1" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="created_for" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="70" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="date_creation" nu="0">
+        <DT arr="0" ds="DateTime" en="" id="700" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="updated_for" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="70" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="date_updated" nu="0">
+        <DT arr="0" ds="DateTime" en="" id="700" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="cd_type_catalogue" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="50" sc="null" sg="1" un="0"/>
+      </Cl>
+      <UniqueConstraints/>
+      <SchTrHis/>
+    </Tbl>
+    <Tbl UsSo="1" nm="mr_catalogues_keys">
+      <TblOpts>WITHOUT OIDS</TblOpts>
+      <Pk ClNs="id_sequences_value" nm="pkmr_catalogues_keys"/>
+      <Cl au="0" df="" nm="id_sequences_value" nu="0">
+        <DT arr="0" ds="BigInt" en="" id="-5" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="cd_table" nu="1">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="30" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="key_01" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="20" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="key_02" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="20" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="key_03" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="20" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="key_04" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="20" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="key_05" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="20" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="value_attribute_01" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="50" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="value_attribute_02" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="50" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="value_attribute_03" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="50" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="value_attribute_04" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="50" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="value_attribute_05" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="50" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="value_attribute_06" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="50" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="value_attribute_07" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="50" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="value_attribute_08" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="50" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="value_attribute_09" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="10" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="value_attribute_10" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="50" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="force" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="20" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="created_for" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="70" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="date_creation" nu="0">
+        <DT arr="0" ds="DateTime" en="" id="700" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="updated_for" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="70" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="date_updated" nu="0">
+        <DT arr="0" ds="DateTime" en="" id="700" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Fk deAc="3" nm="fk_mr_catalogues_keys_mr_catalogues" prLkCl="cd_table" upAc="3">
+        <PrTb mn="0" nm="mr_catalogues" oe="1" sch="mr_admin" zr="1"/>
+        <CdTb mn="1" nm="mr_catalogues_keys" oe="0" sch="mr_admin" zr="1"/>
+        <ClPr cdCl="cd_table" prCl="cd_table"/>
+      </Fk>
+      <UniqueConstraints/>
+      <SchTrHis/>
+    </Tbl>
+    <Tbl UsSo="1" nm="mr_clinical_records">
+      <TblOpts>WITHOUT OIDS</TblOpts>
+      <Pk ClNs="id_record" nm="pk_mr_clinical_records"/>
+      <Cl au="1" df="nextval('mr_admin.seq_mr_clinical_records'::regclass)" nm="id_record" nu="0">
+        <DT arr="0" ds="BigInt" en="" id="-5" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="id_patient" nu="1">
+        <DT arr="0" ds="BigInt" en="" id="-5" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="cd_status" nu="1">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="50" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="cd_record_type" nu="1">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="50" sc="null" sg="1" un="0"/>
+        <Cm>Record Type.
+
+Available values:
+
+001. Evolution Sheet
+002. Entry Sheet
+003. Assessment Sheet
+
+
+
+</Cm>
+      </Cl>
+      <Cl au="0" df="" nm="objective" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="2500" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="subjective" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="2500" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="diagnostic" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="2500" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="medical_treatment" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="2500" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="sw_analysis" nu="1">
+        <DT arr="0" ds="Boolean" en="" id="16" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="cd_analysis" nu="1">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="50" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="id_doctor" nu="1">
+        <DT arr="0" ds="BigInt" en="" id="-5" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="user_updated" nu="1">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="50" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="date_updated" nu="1">
+        <DT arr="0" ds="Date" en="" id="91" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="user_inserted" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="50" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="date_inserted" nu="0">
+        <DT arr="0" ds="Date" en="" id="91" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="current_ailment" nu="1">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="10000" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Fk deAc="3" nm="fk_mr_clinical_records_mr_records_types" prLkCl="cd_record_type" upAc="3">
+        <PrTb mn="0" nm="mr_record_types" oe="1" sch="mr_admin" zr="1"/>
+        <CdTb mn="1" nm="mr_clinical_records" oe="0" sch="mr_admin" zr="1"/>
+        <ClPr cdCl="cd_record_type" prCl="cd_record_type"/>
+      </Fk>
+      <Fk deAc="3" nm="fk_mr_clinical_records_mr_user_patients" prLkCl="id_patient" upAc="3">
+        <PrTb mn="0" nm="mr_user_patients" oe="1" sch="mr_admin" zr="1"/>
+        <CdTb mn="1" nm="mr_clinical_records" oe="0" sch="mr_admin" zr="1"/>
+        <ClPr cdCl="id_patient" prCl="id_patient"/>
+      </Fk>
+      <UniqueConstraints/>
+      <SchTrHis/>
+    </Tbl>
+    <Tbl UsSo="1" nm="mr_cparameter_system">
+      <TblOpts>WITHOUT OIDS</TblOpts>
+      <Pk ClNs="id_parameter" nm="pkmr_cparameter_system"/>
+      <Cl au="0" df="" nm="id_parameter" nu="0">
+        <DT arr="0" ds="BigInt" en="" id="-5" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="ds_parameter" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="100" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="ds_value_parameter" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="100" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="force" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="2" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="sw_modify" nu="0">
+        <DT arr="0" ds="Char" en="" id="1" ln="1" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="cd_type_parameter" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="50" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="created_for" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="70" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="date_creation" nu="0">
+        <DT arr="0" ds="DateTime" en="" id="700" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="updated_for" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="70" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="date_updated" nu="0">
+        <DT arr="0" ds="DateTime" en="" id="700" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <UniqueConstraints/>
+      <SchTrHis/>
+    </Tbl>
+    <Tbl UsSo="1" nm="mr_doctor_attributes">
+      <TblOpts>WITHOUT OIDS</TblOpts>
+      <Pk ClNs="cd_attribute, id_doctor" nm="pk_mr_doctor_attributes"/>
+      <Cl au="0" df="" nm="id_doctor" nu="0">
+        <DT arr="0" ds="BigInt" en="" id="-5" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="cd_attribute" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="50" sc="null" sg="1" un="0"/>
+        <Cm>Atribute key</Cm>
+      </Cl>
+      <Cl au="0" df="" nm="cd_status" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="50" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="user_updated" nu="1">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="50" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="date_updated" nu="1">
+        <DT arr="0" ds="Date" en="" id="91" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="user_inserted" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="50" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="date_inserted" nu="0">
+        <DT arr="0" ds="Date" en="" id="91" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="attribute_value" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="250" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Fk deAc="3" nm="fk_mr_doctor_attributes_mr_attributes" prLkCl="cd_attribute" upAc="3">
+        <PrTb mn="0" nm="mr_attributes" oe="1" sch="mr_admin" zr="0"/>
+        <CdTb mn="1" nm="mr_doctor_attributes" oe="0" sch="mr_admin" zr="1"/>
+        <ClPr cdCl="cd_attribute" prCl="cd_attribute"/>
+      </Fk>
+      <Fk deAc="3" nm="fk_mr_doctor_attributes_mr_cr_user_doctors" prLkCl="id_doctor" upAc="3">
+        <PrTb mn="0" nm="mr_user_doctors" oe="1" sch="mr_admin" zr="0"/>
+        <CdTb mn="1" nm="mr_doctor_attributes" oe="0" sch="mr_admin" zr="1"/>
+        <ClPr cdCl="id_doctor" prCl="id_doctor"/>
+      </Fk>
+      <UniqueConstraints/>
+      <SchTrHis/>
+    </Tbl>
+    <Tbl UsSo="1" nm="mr_dprocesses_mail">
+      <TblOpts>WITHOUT OIDS</TblOpts>
+      <Cl au="0" df="" nm="cd_process" nu="1">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="100" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="id_email" nu="0">
+        <DT arr="0" ds="Numeric" en="" id="2" ln="38" sc="0" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="email_resp_process" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="70" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="created_for" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="70" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="date_creation" nu="0">
+        <DT arr="0" ds="DateTime" en="" id="700" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="update_for" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="70" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="date_updated" nu="0">
+        <DT arr="0" ds="DateTime" en="" id="700" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Fk deAc="3" nm="fk_mr_dprocesses_mail_mr_ext_processes" prLkCl="cd_process" upAc="3">
+        <PrTb mn="0" nm="mr_ext_processes" oe="1" sch="mr_admin" zr="1"/>
+        <CdTb mn="1" nm="mr_dprocesses_mail" oe="0" sch="mr_admin" zr="1"/>
+        <ClPr cdCl="cd_process" prCl="cd_process"/>
+      </Fk>
+      <UniqueConstraints/>
+      <SchTrHis/>
+    </Tbl>
+    <Tbl UsSo="1" nm="mr_ext_notifications">
+      <TblOpts>WITHOUT OIDS</TblOpts>
+      <Cl au="0" df="" nm="cd_notification" nu="1">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="100" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="description_notification" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="100" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="subject_notification" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="350" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="content_notification" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="350" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="created_for" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="70" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="date_creation" nu="0">
+        <DT arr="0" ds="DateTime" en="" id="700" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="updated_for" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="70" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="date_updated" nu="0">
+        <DT arr="0" ds="DateTime" en="" id="700" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="key_type_notification" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="50" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="key_notification" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="50" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="cd_process" nu="1">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="100" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Fk deAc="3" nm="fk_mr_ext_notifications_mr_ext_procnotifies" prLkCl="cd_process" upAc="3">
+        <PrTb mn="0" nm="mr_ext_procnotifies" oe="1" sch="mr_admin" zr="1"/>
+        <CdTb mn="1" nm="mr_ext_notifications" oe="0" sch="mr_admin" zr="1"/>
+        <ClPr cdCl="cd_process" prCl="cd_process"/>
+        <ClPr cdCl="cd_notification" prCl="cd_notification"/>
+      </Fk>
+      <UniqueConstraints/>
+      <SchTrHis/>
+    </Tbl>
+    <Tbl UsSo="1" nm="mr_ext_processes">
+      <TblOpts>WITHOUT OIDS</TblOpts>
+      <Pk ClNs="cd_process" nm="pkmr_ext_processes"/>
+      <Cl au="0" df="" nm="cd_process" nu="1">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="100" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="description_process" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="100" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="ds_force" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="20" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="sw_emails" nu="0">
+        <DT arr="0" ds="Char" en="" id="1" ln="1" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="sw_general_log" nu="0">
+        <DT arr="0" ds="Char" en="" id="1" ln="1" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="sw_genfile" nu="0">
+        <DT arr="0" ds="Char" en="" id="1" ln="1" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="created_for" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="70" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="date_creation" nu="0">
+        <DT arr="0" ds="DateTime" en="" id="700" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="updated_for" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="70" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="date_updated" nu="0">
+        <DT arr="0" ds="DateTime" en="" id="700" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="sw_internal_process" nu="0">
+        <DT arr="0" ds="Char" en="" id="1" ln="1" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="cd_notification" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="100" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Fk deAc="3" nm="fk_mr_ext_processes_mr_ext_procnotifies" prLkCl="cd_process" upAc="3">
+        <PrTb mn="0" nm="mr_ext_procnotifies" oe="1" sch="mr_admin" zr="1"/>
+        <CdTb mn="1" nm="mr_ext_processes" oe="0" sch="mr_admin" zr="1"/>
+        <ClPr cdCl="cd_process" prCl="cd_process"/>
+      </Fk>
+      <UniqueConstraints/>
+      <SchTrHis/>
+    </Tbl>
+    <Tbl UsSo="1" nm="mr_ext_procnotifies">
+      <TblOpts>WITHOUT OIDS</TblOpts>
+      <Pk ClNs="cd_process, cd_notification" nm="pkmr_ext_procnotifies"/>
+      <Cl au="0" df="" nm="cd_process" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="100" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="cd_notification" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="100" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="ds_force" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="20" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="type_event" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="20" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="created_for" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="70" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="date_creation" nu="0">
+        <DT arr="0" ds="DateTime" en="" id="700" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="updated_for" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="70" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="date_updated" nu="0">
+        <DT arr="0" ds="DateTime" en="" id="700" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <UniqueConstraints/>
+      <SchTrHis/>
+    </Tbl>
+    <Tbl UsSo="1" nm="mr_hospitals">
+      <TblOpts>WITHOUT OIDS</TblOpts>
+      <Pk ClNs="id_hospital" nm="pk_mr_hospitals"/>
+      <Cl au="1" df="nextval('mr_admin.seq_mr_hospitals'::regclass)" nm="id_hospital" nu="0">
+        <DT arr="0" ds="BigInt" en="" id="-5" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="cd_hospital_level" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="50" sc="null" sg="1" un="0"/>
+        <Cm>Hospital Level.
+
+Availables values:
+0. Consultory
+1. Medical Cenyer 
+2. Hospital
+</Cm>
+      </Cl>
+      <Cl au="0" df="" nm="cd_status" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="50" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="latitude" nu="1">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="50" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="longitude" nu="1">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="50" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="ds_long_name" nu="1">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="250" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="ds_short_name" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="100" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="user_updated" nu="1">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="50" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="date_updated" nu="1">
+        <DT arr="0" ds="Date" en="" id="91" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="date_inserted" nu="0">
+        <DT arr="0" ds="Date" en="" id="91" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="user_inserted" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="50" sc="null" sg="1" un="0"/>
+      </Cl>
+      <UniqueConstraints/>
+      <SchTrHis/>
+    </Tbl>
+    <Tbl UsSo="1" nm="mr_patient_attributes">
+      <TblOpts>WITHOUT OIDS</TblOpts>
+      <Pk ClNs="cd_attribute, id_patient" nm="pk_mr_patient_attributes"/>
+      <Cl au="0" df="" nm="id_patient" nu="0">
+        <DT arr="0" ds="BigInt" en="" id="-5" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="cd_attribute" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="50" sc="null" sg="1" un="0"/>
+        <Cm>Atribute key</Cm>
+      </Cl>
+      <Cl au="0" df="" nm="cd_estatus" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="50" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="attribute_value" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="250" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="user_updated" nu="1">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="50" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="date_updated" nu="1">
+        <DT arr="0" ds="Date" en="" id="91" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="user_inserted" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="50" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="date_inserted" nu="0">
+        <DT arr="0" ds="Date" en="" id="91" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Fk deAc="3" nm="fk_mr_patience_attributes_mr_attributes" prLkCl="cd_attribute" upAc="3">
+        <PrTb mn="0" nm="mr_attributes" oe="1" sch="mr_admin" zr="0"/>
+        <CdTb mn="1" nm="mr_patient_attributes" oe="0" sch="mr_admin" zr="1"/>
+        <ClPr cdCl="cd_attribute" prCl="cd_attribute"/>
+      </Fk>
+      <Fk deAc="3" nm="fk_mr_patience_attributes_mr_user_patients" prLkCl="id_patient" upAc="3">
+        <PrTb mn="0" nm="mr_user_patients" oe="1" sch="mr_admin" zr="0"/>
+        <CdTb mn="1" nm="mr_patient_attributes" oe="0" sch="mr_admin" zr="1"/>
+        <ClPr cdCl="id_patient" prCl="id_patient"/>
+      </Fk>
+      <UniqueConstraints/>
+      <SchTrHis/>
+    </Tbl>
+    <Tbl UsSo="1" nm="mr_patient_history">
+      <TblOpts>WITHOUT OIDS</TblOpts>
+      <Pk ClNs="id_history" nm="pk_mr_patient_history"/>
+      <Cl au="1" df="nextval('mr_admin.seq_mr_patience_history'::regclass)" nm="id_history" nu="0">
+        <DT arr="0" ds="BigInt" en="" id="-5" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="id_patient" nu="1">
+        <DT arr="0" ds="BigInt" en="" id="-5" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="cd_status" nu="1">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="50" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="date_record_history" nu="1">
+        <DT arr="0" ds="Date" en="" id="91" ln="null" sc="null" sg="1" un="0"/>
+        <Cm>Date when this data is recorded.</Cm>
+      </Cl>
+      <Cl au="0" df="" nm="hereditary_diseases" nu="1">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="10000" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="background_patology" nu="1">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="10000" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="background_non_patology" nu="1">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="10000" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="id_doctor" nu="0">
+        <DT arr="0" ds="BigInt" en="" id="-5" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="user_updated" nu="1">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="50" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="date_updated" nu="1">
+        <DT arr="0" ds="Date" en="" id="91" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="user_inserted" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="50" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="date_inserted" nu="0">
+        <DT arr="0" ds="Date" en="" id="91" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Fk deAc="3" nm="fk_mr_patience_history_mr_cr_user_doctors" prLkCl="id_doctor" upAc="3">
+        <PrTb mn="0" nm="mr_user_doctors" oe="1" sch="mr_admin" zr="0"/>
+        <CdTb mn="1" nm="mr_patient_history" oe="0" sch="mr_admin" zr="1"/>
+        <ClPr cdCl="id_doctor" prCl="id_doctor"/>
+      </Fk>
+      <Fk deAc="3" nm="fk_mr_patience_history_mr_user_patients" prLkCl="id_patient" upAc="3">
+        <PrTb mn="0" nm="mr_user_patients" oe="1" sch="mr_admin" zr="1"/>
+        <CdTb mn="1" nm="mr_patient_history" oe="0" sch="mr_admin" zr="1"/>
+        <ClPr cdCl="id_patient" prCl="id_patient"/>
+      </Fk>
+      <UniqueConstraints/>
+      <SchTrHis/>
+    </Tbl>
+    <Tbl UsSo="1" nm="mr_record_types">
+      <TblOpts>WITHOUT OIDS</TblOpts>
+      <Pk ClNs="cd_record_type" nm="pk_mr_record_types"/>
+      <Cl au="0" df="" nm="cd_record_type" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="50" sc="null" sg="1" un="0"/>
+        <Cm>Record Type.
+
+Available values:
+
+001. Evolution Sheet
+002. Entry Sheet
+003. Assessment Sheet
+
+
+
+</Cm>
+      </Cl>
+      <Cl au="0" df="" nm="cd_status" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="50" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="user_updated" nu="1">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="50" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="date_updated" nu="1">
+        <DT arr="0" ds="Date" en="" id="91" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="user_inserted" nu="0">
+        <DT arr="0" ds="Date" en="" id="91" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="date_inserted" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="50" sc="null" sg="1" un="0"/>
+      </Cl>
+      <UniqueConstraints/>
+      <SchTrHis/>
+    </Tbl>
+    <Tbl UsSo="1" nm="mr_rel_doctors_hospitals">
+      <Cm>RELACION ENTRE DOCTORES Y HOSPITALES</Cm>
+      <TblOpts>WITHOUT OIDS</TblOpts>
+      <Pk ClNs="id_hospital, id_doctor" nm="pk_mr_rel_doctors_hospitals"/>
+      <Cl au="0" df="" nm="id_hospital" nu="0">
+        <DT arr="0" ds="BigInt" en="" id="-5" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="id_doctor" nu="0">
+        <DT arr="0" ds="BigInt" en="" id="-5" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="cd_status" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="50" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="user_updated" nu="1">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="50" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="date_updated" nu="1">
+        <DT arr="0" ds="Date" en="" id="91" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="user_inserted" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="50" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="date_inserted" nu="0">
+        <DT arr="0" ds="Date" en="" id="91" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Fk deAc="3" nm="fk_mr_rel_doctors_hospital_mr_hospitals" prLkCl="id_hospital" upAc="3">
+        <PrTb mn="0" nm="mr_hospitals" oe="1" sch="mr_admin" zr="0"/>
+        <CdTb mn="1" nm="mr_rel_doctors_hospitals" oe="0" sch="mr_admin" zr="1"/>
+        <ClPr cdCl="id_hospital" prCl="id_hospital"/>
+      </Fk>
+      <Fk deAc="3" nm="fk_mr_rel_doctors_hospitals_mr_cr_user_doctors" prLkCl="id_doctor" upAc="3">
+        <PrTb mn="0" nm="mr_user_doctors" oe="1" sch="mr_admin" zr="0"/>
+        <CdTb mn="1" nm="mr_rel_doctors_hospitals" oe="0" sch="mr_admin" zr="1"/>
+        <ClPr cdCl="id_doctor" prCl="id_doctor"/>
+      </Fk>
+      <UniqueConstraints/>
+      <SchTrHis/>
+    </Tbl>
+    <Tbl UsSo="1" nm="mr_seg_rol_screens">
+      <TblOpts>WITHOUT OIDS</TblOpts>
+      <Pk ClNs="id_screen" nm="pkmr_seg_rol_screens"/>
+      <Cl au="0" df="" nm="id_rol" nu="1">
+        <DT arr="0" ds="BigInt" en="" id="-5" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="id_screen" nu="0">
+        <DT arr="0" ds="Numeric" en="" id="2" ln="10" sc="0" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="created_for" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="70" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="date_creation" nu="0">
+        <DT arr="0" ds="DateTime" en="" id="700" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="date_udated" nu="0">
+        <DT arr="0" ds="DateTime" en="" id="700" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="updated_for" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="70" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="sw_writing" nu="0">
+        <DT arr="0" ds="Char" en="" id="1" ln="1" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="sw_query" nu="0">
+        <DT arr="0" ds="Char" en="" id="1" ln="1" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Fk deAc="3" nm="fk_mr_seg_rol_screens_mr_seg_roles" prLkCl="id_rol" upAc="3">
+        <PrTb mn="0" nm="mr_seg_roles" oe="1" sch="mr_admin" zr="1"/>
+        <CdTb mn="1" nm="mr_seg_rol_screens" oe="0" sch="mr_admin" zr="1"/>
+        <ClPr cdCl="id_rol" prCl="id_rol"/>
+      </Fk>
+      <UniqueConstraints/>
+      <SchTrHis/>
+    </Tbl>
+    <Tbl UsSo="1" nm="mr_seg_roles">
+      <TblOpts>WITHOUT OIDS</TblOpts>
+      <Pk ClNs="id_rol" nm="pkmr_seg_roles"/>
+      <Cl au="0" df="" nm="id_rol" nu="0">
+        <DT arr="0" ds="BigInt" en="" id="-5" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="cd_rol" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="60" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="validity" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="20" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="sw_analyst" nu="0">
+        <DT arr="0" ds="Char" en="" id="1" ln="1" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="created_for " nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="70" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="date_creation" nu="0">
+        <DT arr="0" ds="DateTime" en="" id="700" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="date_updated" nu="0">
+        <DT arr="0" ds="DateTime" en="" id="700" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="updated_for " nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="70" sc="null" sg="1" un="0"/>
+      </Cl>
+      <UniqueConstraints/>
+      <SchTrHis/>
+    </Tbl>
+    <Tbl UsSo="1" nm="mr_seg_roles_users">
+      <TblOpts>WITHOUT OIDS</TblOpts>
+      <Pk ClNs="id_rol" nm="pkmr_seg_roles_users"/>
+      <Cl au="0" df="" nm="id_rol" nu="0">
+        <DT arr="0" ds="BigInt" en="" id="-5" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="user_id" nu="0">
+        <DT arr="0" ds="Numeric" en="" id="2" ln="10" sc="2" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="created_for" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="70" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="date_creation" nu="0">
+        <DT arr="0" ds="DateTime" en="" id="700" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="date_updated" nu="0">
+        <DT arr="0" ds="DateTime" en="" id="700" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="updated_for" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="70" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Fk deAc="3" nm="fk_mr_seg_rol_usr_mr_seg_roles" prLkCl="id_rol" upAc="3">
+        <PrTb mn="0" nm="mr_seg_roles" oe="1" sch="mr_admin" zr="0"/>
+        <CdTb mn="1" nm="mr_seg_roles_users" oe="0" sch="mr_admin" zr="1"/>
+        <ClPr cdCl="id_rol" prCl="id_rol"/>
+      </Fk>
+      <Fk deAc="3" nm="fk_mr_seg_users_mr_seg_rol_usr" prLkCl="user_id" upAc="3">
+        <PrTb mn="0" nm="mr_seg_users" oe="1" sch="mr_admin" zr="0"/>
+        <CdTb mn="1" nm="mr_seg_roles_users" oe="0" sch="mr_admin" zr="1"/>
+        <ClPr cdCl="user_id" prCl="user_id"/>
+      </Fk>
+      <UniqueConstraints/>
+      <SchTrHis/>
+    </Tbl>
+    <Tbl UsSo="1" nm="mr_seg_screens">
+      <TblOpts>WITHOUT OIDS</TblOpts>
+      <Cl au="0" df="" nm="id_screen" nu="1">
+        <DT arr="0" ds="Numeric" en="" id="2" ln="10" sc="0" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="screen" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="50" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="ds_screen" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="80" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="button_menu" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="50" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="ds_menu" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="60" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="created_for" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="70" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="date_creation" nu="0">
+        <DT arr="0" ds="DateTime" en="" id="700" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="date_updated" nu="0">
+        <DT arr="0" ds="DateTime" en="" id="700" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="updated_for" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="70" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="screecid_father" nu="0">
+        <DT arr="0" ds="Numeric" en="" id="2" ln="8" sc="0" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="ds_url" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="250" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="cd_level" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="50" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Fk deAc="3" nm="fk_mr_seg_screens_mr_seg_rol_screens" prLkCl="id_screen" upAc="3">
+        <PrTb mn="0" nm="mr_seg_rol_screens" oe="1" sch="mr_admin" zr="1"/>
+        <CdTb mn="1" nm="mr_seg_screens" oe="0" sch="mr_admin" zr="1"/>
+        <ClPr cdCl="id_screen" prCl="id_screen"/>
+      </Fk>
+      <UniqueConstraints/>
+      <SchTrHis/>
+    </Tbl>
+    <Tbl UsSo="1" nm="mr_seg_users">
+      <TblOpts>WITHOUT OIDS</TblOpts>
+      <Pk ClNs="user_id" nm="pkmr_seg_users"/>
+      <Cl au="0" df="" nm="user_id" nu="0">
+        <DT arr="0" ds="Numeric" en="" id="2" ln="10" sc="2" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="username" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="40" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="sw_blocked" nu="0">
+        <DT arr="0" ds="Char" en="" id="1" ln="1" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="validity" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="20" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="created_for" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="70" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="date_creation" nu="0">
+        <DT arr="0" ds="DateTime" en="" id="700" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="date_updated" nu="0">
+        <DT arr="0" ds="DateTime" en="" id="700" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="updated_for" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="70" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="first_user" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="50" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="last_name" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="20" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="sur_name" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="20" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="date_last_accessed" nu="0">
+        <DT arr="0" ds="DateTime" en="" id="700" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="num_access_failed" nu="0">
+        <DT arr="0" ds="Numeric" en="" id="2" ln="8" sc="0" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="ds_question" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="50" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="response" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="250" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="sw_reset_password" nu="0">
+        <DT arr="0" ds="Char" en="" id="1" ln="1" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="date_reset_password" nu="0">
+        <DT arr="0" ds="DateTime" en="" id="700" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="token_rec_password" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="250" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="date_generate_token" nu="0">
+        <DT arr="0" ds="DateTime" en="" id="700" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <UniqueConstraints/>
+      <SchTrHis/>
+    </Tbl>
+    <Tbl UsSo="1" nm="mr_sepomex">
+      <TblOpts>WITHOUT OIDS</TblOpts>
+      <Pk ClNs="id_sepomex" nm="pkmr_sepomex"/>
+      <Cl au="0" df="" nm="id_sepomex" nu="0">
+        <DT arr="0" ds="BigInt" en="" id="-5" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="cd_d_code" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="5" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="ds_d_asenta" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="100" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="ds_d_type_asenta" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="100" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="ds_d_municipio" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="100" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="ds_d_estado" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="100" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="ds_d_cuidad" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="100" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="ds_d_cp" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="100" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="cd_c_estado" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="2" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="cd_c_oficina" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="5" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="cd_c_cp" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="5" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="cd_c_tipo_asenta" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="2" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="cd_c_mncipio" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="3" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="cd_id_asenta_cpcons" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="4" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="ds_d_zona" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="50" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="cd_c_ciudad" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="5" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="id_version" nu="0">
+        <DT arr="0" ds="BigInt" en="" id="-5" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="id_key_alternate" nu="0">
+        <DT arr="0" ds="BigInt" en="" id="-5" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="created_for" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="70" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="date_creation" nu="0">
+        <DT arr="0" ds="DateTime" en="" id="700" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="update_for" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="70" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="date_updgrade" nu="0">
+        <DT arr="0" ds="DateTime" en="" id="700" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="id_proceso" nu="0">
+        <DT arr="0" ds="BigInt" en="" id="-5" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <UniqueConstraints/>
+      <SchTrHis/>
+    </Tbl>
+    <Tbl UsSo="1" nm="mr_user_doctors">
+      <TblOpts>WITHOUT OIDS</TblOpts>
+      <Pk ClNs="id_doctor" nm="pk_mr_user_doctors"/>
+      <Cl au="1" df="nextval('mr_admin.seq_mr_user_doctors'::regclass)" nm="id_doctor" nu="0">
+        <DT arr="0" ds="BigInt" en="" id="-5" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="id_user" nu="0">
+        <DT arr="0" ds="BigInt" en="" id="-5" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="cd_status" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="50" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="medical_identity_card" nu="1">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="100" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="cd_medical_specialty" nu="1">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="50" sc="null" sg="1" un="0"/>
+        <Cm>Medical speciality </Cm>
+      </Cl>
+      <Cl au="0" df="" nm="office_address" nu="1">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="150" sc="null" sg="1" un="0"/>
+        <Cm>Address</Cm>
+      </Cl>
+      <Cl au="0" df="" nm="home_contact" nu="1">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="100" sc="null" sg="1" un="0"/>
+        <Cm>Contact one</Cm>
+      </Cl>
+      <Cl au="0" df="" nm="office_contact" nu="1">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="150" sc="null" sg="1" un="0"/>
+        <Cm>Office Contact</Cm>
+      </Cl>
+      <Cl au="0" df="" nm="other_contact" nu="1">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="150" sc="null" sg="1" un="0"/>
+        <Cm>Other contact</Cm>
+      </Cl>
+      <Cl au="0" df="" nm="user_updated" nu="1">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="50" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="date_updated" nu="1">
+        <DT arr="0" ds="Date" en="" id="91" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="user_inserted" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="50" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="date_inserted" nu="0">
+        <DT arr="0" ds="Date" en="" id="91" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <UniqueConstraints/>
+      <SchTrHis/>
+    </Tbl>
+    <Tbl UsSo="1" nm="mr_user_patients">
+      <TblOpts>WITHOUT OIDS</TblOpts>
+      <Pk ClNs="id_patient" nm="pk_mr_user_patients"/>
+      <Cl au="1" df="nextval('mr_admin.seq_mr_user_patiences'::regclass)" nm="id_patient" nu="0">
+        <DT arr="0" ds="BigInt" en="" id="-5" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="id_user" nu="0">
+        <DT arr="0" ds="BigInt" en="" id="-5" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="cd_status" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="50" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="id_token_bracelet" nu="0">
+        <DT arr="0" ds="BigInt" en="" id="-5" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="date_updated" nu="1">
+        <DT arr="0" ds="Date" en="" id="91" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="user_inserted" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="50" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="date_inserted" nu="0">
+        <DT arr="0" ds="Date" en="" id="91" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="user_updated" nu="1">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="50" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="emergency_contact_name" nu="1">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="50" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="emergency_contact_phone" nu="1">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="50" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Fk deAc="3" nm="fk_mr_rel_user_patience_mr_users" prLkCl="id_user" upAc="3">
+        <PrTb mn="0" nm="mr_users" oe="1" sch="mr_admin" zr="0"/>
+        <CdTb mn="1" nm="mr_user_patients" oe="0" sch="mr_admin" zr="1"/>
+        <ClPr cdCl="id_user" prCl="id_user"/>
+      </Fk>
+      <UniqueConstraints/>
+      <SchTrHis/>
+    </Tbl>
+    <Tbl UsSo="1" nm="mr_users">
+      <TblOpts>WITHOUT OIDS</TblOpts>
+      <Pk ClNs="id_user" nm="pk_mr_users"/>
+      <Cl au="1" df="nextval('mr_admin.seq_mr_users'::regclass)" nm="id_user" nu="0">
+        <DT arr="0" ds="BigInt" en="" id="-5" ln="null" sc="null" sg="1" un="0"/>
+        <Cm>IDENTIFICADOR DEL USUARIO</Cm>
+      </Cl>
+      <Cl au="1" df="nextval('mr_admin.seq_mr_users'::regclass)" nm="cd_status" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="50" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="cd_login_type" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="50" sc="null" sg="1" un="0"/>
+        <Cm>LOGIN TYPE, TOKEN, PASSWORD</Cm>
+      </Cl>
+      <Cl au="0" df="" nm="first_name" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="250" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="last_name" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="250" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="sur_name" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="250" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="rfc" nu="1">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="13" sc="null" sg="1" un="0"/>
+        <Cm>RFC USER</Cm>
+      </Cl>
+      <Cl au="0" df="" nm="curp" nu="1">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="20" sc="null" sg="1" un="0"/>
+        <Cm>USER CURP</Cm>
+      </Cl>
+      <Cl au="0" df="" nm="email" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="100" sc="null" sg="1" un="0"/>
+        <Cm>USER MAIL</Cm>
+      </Cl>
+      <Cl au="0" df="" nm="user_updated" nu="1">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="50" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="date_updated" nu="1">
+        <DT arr="0" ds="Date" en="" id="91" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="user_inserted" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="50" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="date_inserted" nu="0">
+        <DT arr="0" ds="Date" en="" id="91" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <UniqueConstraints/>
+      <SchTrHis/>
+    </Tbl>
+    <View nm="mr_v_user_roles">
+      <Sql>SELECT
+    users.id_user,
+    users.cd_status,
+    users.cd_login_type,
+    users.first_name,
+    users.last_name,
+    users.sur_name,
+    users.rfc,
+    users.curp,
+    users.email,
+    'D'::text AS cd_user_type,
+    doctors.id_doctor AS idrol
+FROM mr_admin.mr_users users,
+    mr_admin.mr_user_doctors doctors
+WHERE users.id_user = doctors.id_user UNION SELECT users.id_user,
+    users.cd_status,
+    users.cd_login_type,
+    users.first_name,
+    users.last_name,
+    users.sur_name,
+    users.rfc,
+    users.curp,
+    users.email,
+    'P'::text AS cd_user_type,
+    patients.id_patient AS idrol
+FROM mr_admin.mr_users users,
+    mr_admin.mr_user_patients patients
+WHERE users.id_user = patients.id_user
+ORDER BY 10</Sql>
+    </View>
+    <Seq incr="1" nm="hibernate_sequence"/>
+    <Seq incr="1" nm="seq_mr_clinical_record_id_record">
+      <Cm>DbWrench Autogenerated Sequence.</Cm>
+    </Seq>
+    <Seq incr="1" nm="seq_mr_clinical_records">
+      <Cm>DbWrench Autogenerated Sequence.</Cm>
+    </Seq>
+    <Seq incr="1" nm="seq_mr_cr_user_doctor_id_rel">
+      <Cm>DbWrench Autogenerated Sequence.</Cm>
+    </Seq>
+    <Seq incr="1" nm="seq_mr_cr_user_patience_id_rel">
+      <Cm>DbWrench Autogenerated Sequence.</Cm>
+    </Seq>
+    <Seq incr="1" nm="seq_mr_doctor_attributes_id_doctor">
+      <Cm>DbWrench Autogenerated Sequence.</Cm>
+    </Seq>
+    <Seq incr="1" nm="seq_mr_hospitals">
+      <Cm>DbWrench Autogenerated Sequence.</Cm>
+    </Seq>
+    <Seq incr="1" nm="seq_mr_hospitals_id_hospital">
+      <Cm>DbWrench Autogenerated Sequence.</Cm>
+    </Seq>
+    <Seq incr="1" nm="seq_mr_patience_history">
+      <Cm>DbWrench Autogenerated Sequence.</Cm>
+    </Seq>
+    <Seq incr="1" nm="seq_mr_patience_history_id_history">
+      <Cm>DbWrench Autogenerated Sequence.</Cm>
+    </Seq>
+    <Seq incr="1" nm="seq_mr_rel_doctors_hospital_id_rel">
+      <Cm>DbWrench Autogenerated Sequence.</Cm>
+    </Seq>
+    <Seq incr="1" nm="seq_mr_user_doctors">
+      <Cm>DbWrench Autogenerated Sequence.</Cm>
+    </Seq>
+    <Seq incr="1" nm="seq_mr_user_patiences">
+      <Cm>DbWrench Autogenerated Sequence.</Cm>
+    </Seq>
+    <Seq incr="1" nm="seq_mr_users">
+      <Cm>DbWrench Autogenerated Sequence.</Cm>
+    </Seq>
+    <Seq incr="1" nm="seq_mr_users_id_user">
+      <Cm>DbWrench Autogenerated Sequence.</Cm>
+    </Seq>
+    <CustomTypes/>
+  </Sch>
+  <Dgm nm="diagramA">
+    <RnCf ClkAct="true" FtSz="11" lkStgy="RightAngleStrategy" zm="0.75">
+      <VbCfg>
+        <Fg ky="Auto Number" vl="0"/>
+        <Fg ky="Check" vl="0"/>
+        <Fg ky="Comment" vl="0"/>
+        <Fg ky="Data Type" vl="1"/>
+        <Fg ky="Default" vl="0"/>
+        <Fg ky="ENUM Values" vl="0"/>
+        <Fg ky="Length" vl="1"/>
+        <Fg ky="Name" vl="1"/>
+        <Fg ky="Nullable" vl="0"/>
+        <Fg ky="Schema Name" vl="0"/>
+        <Fg ky="Signed" vl="0"/>
+      </VbCfg>
+    </RnCf>
+    <DiaProps>
+      <Show AllCols="1" FkCols="1" FkNms="1" PkCols="1"/>
+      <ErNotation>BarkerErNotation</ErNotation>
+      <DbTableRectangleFill>HeaderFooterFill</DbTableRectangleFill>
+      <svg path=""/>
+    </DiaProps>
+    <TbGl bkCl="ff6666ff" sch="mr_admin" tbl="mr_attributes" x="1055" y="250"/>
+    <TbGl bkCl="ff6666ff" sch="mr_admin" tbl="mr_clinical_records" x="576" y="695"/>
+    <TbGl bkCl="ff6666ff" sch="mr_admin" tbl="mr_doctor_attributes" x="1087" y="546"/>
+    <TbGl bkCl="ff6666ff" sch="mr_admin" tbl="mr_hospitals" x="69" y="42"/>
+    <TbGl bkCl="ff6666ff" sch="mr_admin" tbl="mr_patient_attributes" x="1063" y="29"/>
+    <TbGl bkCl="ff6666ff" sch="mr_admin" tbl="mr_patient_history" x="18" y="750"/>
+    <TbGl bkCl="ff6666ff" sch="mr_admin" tbl="mr_record_types" x="1107" y="797"/>
+    <TbGl bkCl="ff6666ff" sch="mr_admin" tbl="mr_rel_doctors_hospitals" x="72" y="288"/>
+    <TbGl bkCl="ff6666ff" sch="mr_admin" tbl="mr_user_doctors" x="45" y="483"/>
+    <TbGl bkCl="ff6666ff" sch="mr_admin" tbl="mr_user_patients" x="529" y="378"/>
+    <TbGl bkCl="ff6666ff" sch="mr_admin" tbl="mr_users" x="538" y="50"/>
+    <TbGl bkCl="ff6666ff" sch="mr_admin" tbl="mr_ext_processes" x="2621" y="262"/>
+    <TbGl bkCl="ff6666ff" sch="mr_admin" tbl="mr_sepomex" x="3107" y="312"/>
+    <TbGl bkCl="ff6666ff" sch="mr_admin" tbl="mr_seg_users" x="1440" y="405"/>
+    <TbGl bkCl="ff6666ff" sch="mr_admin" tbl="mr_seg_screens" x="1948" y="244"/>
+    <TbGl bkCl="ff6666ff" sch="mr_admin" tbl="mr_seg_roles_users" x="1474" y="226"/>
+    <TbGl bkCl="ff6666ff" sch="mr_admin" tbl="mr_seg_roles" x="1478" y="34"/>
+    <TbGl bkCl="ff6666ff" sch="mr_admin" tbl="mr_seg_rol_screens" x="1951" y="38"/>
+    <TbGl bkCl="ff6666ff" sch="mr_admin" tbl="mr_ext_procnotifies" x="2634" y="38"/>
+    <TbGl bkCl="ff6666ff" sch="mr_admin" tbl="mr_ext_notifications" x="2259" y="131"/>
+    <TbGl bkCl="ff6666ff" sch="mr_admin" tbl="mr_dprocesses_mail" x="2614" y="539"/>
+    <TbGl bkCl="ff6666ff" sch="mr_admin" tbl="mr_cparameter_system" x="1449" y="712"/>
+    <TbGl bkCl="ff6666ff" sch="mr_admin" tbl="mr_catalogues_keys" x="3496" y="306"/>
+    <TbGl bkCl="ff6666ff" sch="mr_admin" tbl="mr_catalogues" x="3480" y="18"/>
+    <TbGl bkCl="ff6666ff" sch="mr_admin" tbl="mr_catalogue_structures" x="3092" y="102"/>
+    <TbGl bkCl="ff6666ff" sch="mr_admin" tbl="mr_audit_table" x="1975" y="458"/>
+    <TbGl bkCl="ff6666ff" sch="mr_admin" tbl="mr_audit" x="1958" y="589"/>
+    <FkGl bkCl="ff000000" childEdge="NORTH" nm="mr_admin.mr_audit.fk_mr_audit_mr_audit_table" parentEdge="SOUTH" positioner="OneLineUserLinkPositioner">
+      <positionableLines>
+        <positionableLine lineRole="SINGLE_LINE" x1="2090" x2="2090" y1="524" y2="589"/>
+      </positionableLines>
+    </FkGl>
+    <FkGl bkCl="ff000000" childEdge="NORTH" nm="mr_admin.mr_catalogue_structures.fk_mr_catalogue_structures_mr_catalogues" parentEdge="WEST" positioner="TwoLineUserLinkPositioner">
+      <positionableLines>
+        <positionableLine lineRole="PARENT_LINE" x1="3480" x2="3196" y1="74" y2="74"/>
+        <positionableLine lineRole="CHILD_LINE" x1="3192" x2="3192" y1="102" y2="78"/>
+      </positionableLines>
+    </FkGl>
+    <FkGl bkCl="ff000000" childEdge="NORTH" nm="mr_admin.mr_catalogues_keys.fk_mr_catalogues_keys_mr_catalogues" parentEdge="SOUTH" positioner="OneLineUserLinkPositioner">
+      <positionableLines>
+        <positionableLine lineRole="SINGLE_LINE" x1="3612" x2="3612" y1="214" y2="306"/>
+      </positionableLines>
+    </FkGl>
+    <FkGl bkCl="ff000000" childEdge="EAST" nm="mr_admin.mr_clinical_records.fk_mr_clinical_records_mr_records_types" parentEdge="WEST" positioner="OneLineUserLinkPositioner">
+      <positionableLines>
+        <positionableLine lineRole="SINGLE_LINE" x1="1107" x2="857" y1="828" y2="828"/>
+      </positionableLines>
+    </FkGl>
+    <FkGl bkCl="ff000000" childEdge="NORTH" nm="mr_admin.mr_clinical_records.fk_mr_clinical_records_mr_user_patients" parentEdge="SOUTH" positioner="OneLineUserLinkPositioner">
+      <positionableLines>
+        <positionableLine lineRole="SINGLE_LINE" x1="712" x2="712" y1="535" y2="695"/>
+      </positionableLines>
+    </FkGl>
+    <FkGl bkCl="ff000000" childEdge="NORTH" nm="mr_admin.mr_doctor_attributes.fk_mr_doctor_attributes_mr_attributes" parentEdge="SOUTH" positioner="OneLineUserLinkPositioner">
+      <positionableLines>
+        <positionableLine lineRole="SINGLE_LINE" x1="1191" x2="1191" y1="459" y2="546"/>
+      </positionableLines>
+    </FkGl>
+    <FkGl bkCl="ff000000" childEdge="WEST" nm="mr_admin.mr_doctor_attributes.fk_mr_doctor_attributes_mr_cr_user_doctors" parentEdge="EAST" positioner="OneLineUserLinkPositioner">
+      <positionableLines>
+        <positionableLine lineRole="SINGLE_LINE" x1="330" x2="1087" y1="577" y2="577"/>
+      </positionableLines>
+    </FkGl>
+    <FkGl bkCl="ff000000" childEdge="NORTH" nm="mr_admin.mr_dprocesses_mail.fk_mr_dprocesses_mail_mr_ext_processes" parentEdge="SOUTH" positioner="OneLineUserLinkPositioner">
+      <positionableLines>
+        <positionableLine lineRole="SINGLE_LINE" x1="2758" x2="2758" y1="445" y2="539"/>
+      </positionableLines>
+    </FkGl>
+    <FkGl bkCl="ff000000" childEdge="NORTH" nm="mr_admin.mr_ext_notifications.fk_mr_ext_notifications_mr_ext_procnotifies" parentEdge="WEST" positioner="TwoLineUserLinkPositioner">
+      <positionableLines>
+        <positionableLine lineRole="PARENT_LINE" x1="2634" x2="2394" y1="53" y2="53"/>
+        <positionableLine lineRole="CHILD_LINE" x1="2390" x2="2390" y1="131" y2="57"/>
+      </positionableLines>
+    </FkGl>
+    <FkGl bkCl="ff000000" childEdge="NORTH" nm="mr_admin.mr_ext_processes.fk_mr_ext_processes_mr_ext_procnotifies" parentEdge="SOUTH" positioner="OneLineUserLinkPositioner">
+      <positionableLines>
+        <positionableLine lineRole="SINGLE_LINE" x1="2755" x2="2755" y1="169" y2="262"/>
+      </positionableLines>
+    </FkGl>
+    <FkGl bkCl="ff000000" childEdge="SOUTH" nm="mr_admin.mr_patient_attributes.fk_mr_patience_attributes_mr_attributes" parentEdge="NORTH" positioner="OneLineUserLinkPositioner">
+      <positionableLines>
+        <positionableLine lineRole="SINGLE_LINE" x1="1190" x2="1190" y1="250" y2="160"/>
+      </positionableLines>
+    </FkGl>
+    <FkGl bkCl="ff000000" childEdge="WEST" nm="mr_admin.mr_patient_attributes.fk_mr_patience_attributes_mr_user_patients" parentEdge="EAST" positioner="ThreeLineUserLinkPositioner">
+      <positionableLines>
+        <positionableLine lineRole="PARENT_LINE" x1="836" x2="929" y1="410" y2="410"/>
+        <positionableLine lineRole="CHILD_LINE" x1="1063" x2="937" y1="62" y2="62"/>
+        <positionableLine lineRole="MIDDLE_LINE" x1="933" x2="933" y1="66" y2="406"/>
+      </positionableLines>
+    </FkGl>
+    <FkGl bkCl="ff000000" childEdge="NORTH" nm="mr_admin.mr_patient_history.fk_mr_patience_history_mr_cr_user_doctors" parentEdge="SOUTH" positioner="OneLineUserLinkPositioner">
+      <positionableLines>
+        <positionableLine lineRole="SINGLE_LINE" x1="210" x2="210" y1="679" y2="750"/>
+      </positionableLines>
+    </FkGl>
+    <FkGl bkCl="ff000000" childEdge="EAST" nm="mr_admin.mr_patient_history.fk_mr_patience_history_mr_user_patients" parentEdge="SOUTH" positioner="TwoLineUserLinkPositioner">
+      <positionableLines>
+        <positionableLine lineRole="PARENT_LINE" x1="553" x2="553" y1="535" y2="789"/>
+        <positionableLine lineRole="CHILD_LINE" x1="343" x2="549" y1="793" y2="793"/>
+      </positionableLines>
+    </FkGl>
+    <FkGl bkCl="ff000000" childEdge="NORTH" nm="mr_admin.mr_rel_doctors_hospitals.fk_mr_rel_doctors_hospital_mr_hospitals" parentEdge="SOUTH" positioner="OneLineUserLinkPositioner">
+      <positionableLines>
+        <positionableLine lineRole="SINGLE_LINE" x1="187" x2="187" y1="212" y2="288"/>
+      </positionableLines>
+    </FkGl>
+    <FkGl bkCl="ff000000" childEdge="SOUTH" nm="mr_admin.mr_rel_doctors_hospitals.fk_mr_rel_doctors_hospitals_mr_cr_user_doctors" parentEdge="NORTH" positioner="OneLineUserLinkPositioner">
+      <positionableLines>
+        <positionableLine lineRole="SINGLE_LINE" x1="205" x2="205" y1="483" y2="406"/>
+      </positionableLines>
+    </FkGl>
+    <FkGl bkCl="ff000000" childEdge="WEST" nm="mr_admin.mr_seg_rol_screens.fk_mr_seg_rol_screens_mr_seg_roles" parentEdge="EAST" positioner="OneLineUserLinkPositioner">
+      <positionableLines>
+        <positionableLine lineRole="SINGLE_LINE" x1="1709" x2="1951" y1="101" y2="101"/>
+      </positionableLines>
+    </FkGl>
+    <FkGl bkCl="ff000000" childEdge="NORTH" nm="mr_admin.mr_seg_roles_users.fk_mr_seg_rol_usr_mr_seg_roles" parentEdge="SOUTH" positioner="OneLineUserLinkPositioner">
+      <positionableLines>
+        <positionableLine lineRole="SINGLE_LINE" x1="1593" x2="1593" y1="165" y2="226"/>
+      </positionableLines>
+    </FkGl>
+    <FkGl bkCl="ff000000" childEdge="SOUTH" nm="mr_admin.mr_seg_roles_users.fk_mr_seg_users_mr_seg_rol_usr" parentEdge="NORTH" positioner="OneLineUserLinkPositioner">
+      <positionableLines>
+        <positionableLine lineRole="SINGLE_LINE" x1="1593" x2="1593" y1="405" y2="331"/>
+      </positionableLines>
+    </FkGl>
+    <FkGl bkCl="ff000000" childEdge="NORTH" nm="mr_admin.mr_seg_screens.fk_mr_seg_screens_mr_seg_rol_screens" parentEdge="SOUTH" positioner="OneLineUserLinkPositioner">
+      <positionableLines>
+        <positionableLine lineRole="SINGLE_LINE" x1="2073" x2="2073" y1="169" y2="244"/>
+      </positionableLines>
+    </FkGl>
+    <FkGl bkCl="ff000000" childEdge="NORTH" nm="mr_admin.mr_user_patients.fk_mr_rel_user_patience_mr_users" parentEdge="SOUTH" positioner="OneLineUserLinkPositioner">
+      <positionableLines>
+        <positionableLine lineRole="SINGLE_LINE" x1="678" x2="678" y1="246" y2="378"/>
+      </positionableLines>
+    </FkGl>
+    <Notes/>
+    <Zones/>
+  </Dgm>
+  <RnmMgr NxRnmId="37">
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="mr_seg_roles" SupCls="Schema" SupNme="mr_admin">
+      <Rnm id="1" nNm="id_rol" oNm="Id"/>
+    </RnmCh>
+    <RnmCh ObjCls="Table" ParCls="Schema" ParNme="mr_admin" SupCls="" SupNme="">
+      <Rnm id="20" nNm="mr_seg_roles_users" oNm="mr_seg_rol_usr"/>
+      <Rnm id="2" nNm="mr_seg_rol_usr" oNm="mr_seg_usr"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="mr_seg_rol_screens" SupCls="Schema" SupNme="mr_admin">
+      <Rnm id="3" nNm="id_screen" oNm="ds_rol"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="mr_seg_screens" SupCls="Schema" SupNme="mr_admin">
+      <Rnm id="4" nNm="id_screen" oNm="Id"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="mr_seg_rol_screens" SupCls="Schema" SupNme="mr_admin">
+      <Rnm id="5" nNm="id_screen" oNm="mr_seg_screen_id_screen"/>
+    </RnmCh>
+    <RnmCh ObjCls="Table" ParCls="Schema" ParNme="mr_admin" SupCls="" SupNme="">
+      <Rnm id="6" nNm="mr_ext_procnotifies" oNm="mr_procnotifies"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="mr_ext_procnotifies" SupCls="Schema" SupNme="mr_admin">
+      <Rnm id="7" nNm="cd_process" oNm="Id"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="mr_ext_notifications" SupCls="Schema" SupNme="mr_admin">
+      <Rnm id="13" nNm="cd_notification" oNm="id_notification"/>
+      <Rnm id="8" nNm="id_notification" oNm="Id"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="mr_ext_procnotifies" SupCls="Schema" SupNme="mr_admin">
+      <Rnm id="9" nNm="cd_notification" oNm="cd_notifies"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="mr_ext_processes" SupCls="Schema" SupNme="mr_admin">
+      <Rnm id="10" nNm="cd_process" oNm="Id"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="mr_dprocesses_mail" SupCls="Schema" SupNme="mr_admin">
+      <Rnm id="11" nNm="cd_proceso" oNm="Id"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="mr_catalogues" SupCls="Schema" SupNme="mr_admin">
+      <Rnm id="12" nNm="cd_table" oNm="Id"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="mr_catalogue_structures" SupCls="Schema" SupNme="mr_admin">
+      <Rnm id="14" nNm="cd_table" oNm="Id"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="mr_catalogue_structures" SupCls="Schema" SupNme="mr_admin">
+      <Rnm id="15" nNm="cd_format" oNm="key_format"/>
+    </RnmCh>
+    <RnmCh ObjCls="Table" ParCls="Schema" ParNme="mr_admin" SupCls="" SupNme="">
+      <Rnm id="24" nNm="mr_catalogues" oNm="mr_catalogue"/>
+      <Rnm id="16" nNm="mr_catalogue" oNm="mr_ana_catalogue"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="mr_catalogues_keys" SupCls="Schema" SupNme="mr_admin">
+      <Rnm id="17" nNm="id_sequences_value" oNm="Id"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="mr_catalogue_structures" SupCls="Schema" SupNme="mr_admin">
+      <Rnm id="18" nNm="date_creation" oNm="date_created"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="mr_sepomex" SupCls="Schema" SupNme="mr_admin">
+      <Rnm id="19" nNm="id_sepomex" oNm="Id"/>
+    </RnmCh>
+    <RnmCh ObjCls="Table" ParCls="Schema" ParNme="mr_admin" SupCls="" SupNme="">
+      <Rnm id="21" nNm="mr_seg_rol_screens" oNm="mr_seg_rol_screen "/>
+    </RnmCh>
+    <RnmCh ObjCls="Table" ParCls="Schema" ParNme="mr_admin" SupCls="" SupNme="">
+      <Rnm id="22" nNm="mr_seg_screens" oNm="mr_seg_screen"/>
+    </RnmCh>
+    <RnmCh ObjCls="Table" ParCls="Schema" ParNme="mr_admin" SupCls="" SupNme="">
+      <Rnm id="23" nNm="mr_ext_notifications" oNm="mr_ext_notification"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="mr_audit" SupCls="Schema" SupNme="mr_admin">
+      <Rnm id="25" nNm="user_audit" oNm="user"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="mr_audit" SupCls="Schema" SupNme="mr_admin">
+      <Rnm id="26" nNm="current_value" oNm="current value"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="mr_ext_notifications" SupCls="Schema" SupNme="mr_admin">
+      <Rnm id="27" nNm="cd_notification" oNm="mr_ext_procnotifies_cd_notification"/>
+    </RnmCh>
+    <RnmCh ObjCls="Table" ParCls="Schema" ParNme="mr_admin" SupCls="" SupNme="">
+      <Rnm id="28" nNm="mr_ext_processes" oNm="mt_ext_processes"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="mr_seg_rol_screens" SupCls="Schema" SupNme="mr_admin">
+      <Rnm id="29" nNm="id_rol" oNm="mr_seg_roles_id_rol"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="mr_seg_screens" SupCls="Schema" SupNme="mr_admin">
+      <Rnm id="30" nNm="id_screen" oNm="mr_seg_rol_screens_id_screen"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="mr_ext_notifications" SupCls="Schema" SupNme="mr_admin">
+      <Rnm id="31" nNm="cd_notification" oNm="mr_ext_procnotifies_cd_notification"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="mr_ext_processes" SupCls="Schema" SupNme="mr_admin">
+      <Rnm id="32" nNm="cd_process" oNm="mr_ext_procnotifies_cd_process"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="mr_dprocesses_mail" SupCls="Schema" SupNme="mr_admin">
+      <Rnm id="33" nNm="cd_process" oNm="mr_ext_processes_cd_process"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="mr_ext_procnotifies" SupCls="Schema" SupNme="mr_admin">
+      <Rnm id="34" nNm="ds_force" oNm="force "/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="mr_ext_processes" SupCls="Schema" SupNme="mr_admin">
+      <Rnm id="35" nNm="ds_force" oNm="force"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="mr_ext_processes" SupCls="Schema" SupNme="mr_admin">
+      <Rnm id="36" nNm="cd_process" oNm="mr_ext_procnotifies_cd_process"/>
+    </RnmCh>
+  </RnmMgr>
+  <DbDocOptionMgr>
+    <BasicOptionMgr>
+      <Name>db.doc.option.mgr</Name>
+      <BoolOpt lbl="Diagrams" nm="doc.diagrams" on="1" spl="0"/>
+      <BoolOpt lbl="Foreign Keys" nm="doc.fks" on="1" spl="0"/>
+      <BoolOpt lbl="Indexes" nm="doc.indexes" on="1" spl="0"/>
+      <BoolOpt lbl="Overwrite CSS File" nm="doc.overwrite.css" on="1" spl="0"/>
+      <BoolOpt lbl="Procedures" nm="doc.procs" on="1" spl="0"/>
+      <BoolOpt lbl="Schemas" nm="doc.schemas" on="1" spl="0"/>
+      <BoolOpt lbl="Sequences" nm="doc.sequences" on="1" spl="0"/>
+      <BoolOpt lbl="Tables" nm="doc.tables" on="1" spl="0"/>
+      <BoolOpt lbl="Triggers" nm="doc.triggers" on="1" spl="0"/>
+      <BoolOpt lbl="Views" nm="doc.views" on="1" spl="0"/>
+    </BasicOptionMgr>
+  </DbDocOptionMgr>
+  <OpenEditors>
+    <OpenEditor ClsNm="Diagram" fqn="null.diagramA" selected="1"/>
+  </OpenEditors>
+  <TreePaths>
+    <TreePath/>
+    <TreePath>/Schemas (1)</TreePath>
+    <TreePath>/Schemas (1)/mr_admin</TreePath>
+    <TreePath>/Schemas (1)/mr_admin/Tables (27)</TreePath>
+  </TreePaths>
+  <SqlTexts/>
+</Db>
