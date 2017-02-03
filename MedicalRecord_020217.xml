@@ -546,11 +546,6 @@ Available values:
       <Cl au="0" df="" nm="cd_notification" nu="0">
         <DT arr="0" ds="VarChar" en="" id="12" ln="100" sc="null" sg="1" un="0"/>
       </Cl>
-      <Fk deAc="3" nm="fk_mr_ext_processes_mr_ext_procnotifies" prLkCl="cd_process" upAc="3">
-        <PrTb mn="0" nm="mr_ext_procnotifies" oe="1" sch="mr_admin" zr="1"/>
-        <CdTb mn="1" nm="mr_ext_processes" oe="0" sch="mr_admin" zr="1"/>
-        <ClPr cdCl="cd_process" prCl="cd_process"/>
-      </Fk>
       <UniqueConstraints/>
       <SchTrHis/>
     </Tbl>
@@ -1364,7 +1359,7 @@ ORDER BY 10</Sql>
     </FkGl>
     <FkGl bkCl="ff000000" childEdge="EAST" nm="mr_admin.mr_clinical_records.fk_mr_clinical_records_mr_records_types" parentEdge="WEST" positioner="OneLineUserLinkPositioner">
       <positionableLines>
-        <positionableLine lineRole="SINGLE_LINE" x1="1107" x2="857" y1="828" y2="828"/>
+        <positionableLine lineRole="SINGLE_LINE" x1="1107" x2="856" y1="828" y2="828"/>
       </positionableLines>
     </FkGl>
     <FkGl bkCl="ff000000" childEdge="NORTH" nm="mr_admin.mr_clinical_records.fk_mr_clinical_records_mr_user_patients" parentEdge="SOUTH" positioner="OneLineUserLinkPositioner">
@@ -1379,7 +1374,7 @@ ORDER BY 10</Sql>
     </FkGl>
     <FkGl bkCl="ff000000" childEdge="WEST" nm="mr_admin.mr_doctor_attributes.fk_mr_doctor_attributes_mr_cr_user_doctors" parentEdge="EAST" positioner="OneLineUserLinkPositioner">
       <positionableLines>
-        <positionableLine lineRole="SINGLE_LINE" x1="330" x2="1087" y1="577" y2="577"/>
+        <positionableLine lineRole="SINGLE_LINE" x1="329" x2="1087" y1="577" y2="577"/>
       </positionableLines>
     </FkGl>
     <FkGl bkCl="ff000000" childEdge="NORTH" nm="mr_admin.mr_dprocesses_mail.fk_mr_dprocesses_mail_mr_ext_processes" parentEdge="SOUTH" positioner="OneLineUserLinkPositioner">
@@ -1387,15 +1382,9 @@ ORDER BY 10</Sql>
         <positionableLine lineRole="SINGLE_LINE" x1="2758" x2="2758" y1="445" y2="539"/>
       </positionableLines>
     </FkGl>
-    <FkGl bkCl="ff000000" childEdge="NORTH" nm="mr_admin.mr_ext_notifications.fk_mr_ext_notifications_mr_ext_procnotifies" parentEdge="WEST" positioner="TwoLineUserLinkPositioner">
+    <FkGl bkCl="ff000000" childEdge="EAST" nm="mr_admin.mr_ext_notifications.fk_mr_ext_notifications_mr_ext_procnotifies" parentEdge="WEST" positioner="OneLineUserLinkPositioner">
       <positionableLines>
-        <positionableLine lineRole="PARENT_LINE" x1="2634" x2="2394" y1="53" y2="53"/>
-        <positionableLine lineRole="CHILD_LINE" x1="2390" x2="2390" y1="131" y2="57"/>
-      </positionableLines>
-    </FkGl>
-    <FkGl bkCl="ff000000" childEdge="NORTH" nm="mr_admin.mr_ext_processes.fk_mr_ext_processes_mr_ext_procnotifies" parentEdge="SOUTH" positioner="OneLineUserLinkPositioner">
-      <positionableLines>
-        <positionableLine lineRole="SINGLE_LINE" x1="2755" x2="2755" y1="169" y2="262"/>
+        <positionableLine lineRole="SINGLE_LINE" x1="2634" x2="2549" y1="150" y2="150"/>
       </positionableLines>
     </FkGl>
     <FkGl bkCl="ff000000" childEdge="SOUTH" nm="mr_admin.mr_patient_attributes.fk_mr_patience_attributes_mr_attributes" parentEdge="NORTH" positioner="OneLineUserLinkPositioner">
@@ -1405,7 +1394,7 @@ ORDER BY 10</Sql>
     </FkGl>
     <FkGl bkCl="ff000000" childEdge="WEST" nm="mr_admin.mr_patient_attributes.fk_mr_patience_attributes_mr_user_patients" parentEdge="EAST" positioner="ThreeLineUserLinkPositioner">
       <positionableLines>
-        <positionableLine lineRole="PARENT_LINE" x1="836" x2="929" y1="410" y2="410"/>
+        <positionableLine lineRole="PARENT_LINE" x1="835" x2="929" y1="410" y2="410"/>
         <positionableLine lineRole="CHILD_LINE" x1="1063" x2="937" y1="62" y2="62"/>
         <positionableLine lineRole="MIDDLE_LINE" x1="933" x2="933" y1="66" y2="406"/>
       </positionableLines>
@@ -1418,7 +1407,7 @@ ORDER BY 10</Sql>
     <FkGl bkCl="ff000000" childEdge="EAST" nm="mr_admin.mr_patient_history.fk_mr_patience_history_mr_user_patients" parentEdge="SOUTH" positioner="TwoLineUserLinkPositioner">
       <positionableLines>
         <positionableLine lineRole="PARENT_LINE" x1="553" x2="553" y1="535" y2="789"/>
-        <positionableLine lineRole="CHILD_LINE" x1="343" x2="549" y1="793" y2="793"/>
+        <positionableLine lineRole="CHILD_LINE" x1="342" x2="549" y1="793" y2="793"/>
       </positionableLines>
     </FkGl>
     <FkGl bkCl="ff000000" childEdge="NORTH" nm="mr_admin.mr_rel_doctors_hospitals.fk_mr_rel_doctors_hospital_mr_hospitals" parentEdge="SOUTH" positioner="OneLineUserLinkPositioner">
@@ -1433,7 +1422,7 @@ ORDER BY 10</Sql>
     </FkGl>
     <FkGl bkCl="ff000000" childEdge="WEST" nm="mr_admin.mr_seg_rol_screens.fk_mr_seg_rol_screens_mr_seg_roles" parentEdge="EAST" positioner="OneLineUserLinkPositioner">
       <positionableLines>
-        <positionableLine lineRole="SINGLE_LINE" x1="1709" x2="1951" y1="101" y2="101"/>
+        <positionableLine lineRole="SINGLE_LINE" x1="1708" x2="1951" y1="101" y2="101"/>
       </positionableLines>
     </FkGl>
     <FkGl bkCl="ff000000" childEdge="NORTH" nm="mr_admin.mr_seg_roles_users.fk_mr_seg_rol_usr_mr_seg_roles" parentEdge="SOUTH" positioner="OneLineUserLinkPositioner">
@@ -1586,6 +1575,12 @@ ORDER BY 10</Sql>
     <TreePath>/Schemas (1)</TreePath>
     <TreePath>/Schemas (1)/mr_admin</TreePath>
     <TreePath>/Schemas (1)/mr_admin/Tables (27)</TreePath>
+    <TreePath>/Diagrams (1)</TreePath>
+    <TreePath>/Diagrams (1)/diagramA</TreePath>
   </TreePaths>
-  <SqlTexts/>
+  <SqlTexts>
+    <SqlText path="">
+      <Sql/>
+    </SqlText>
+  </SqlTexts>
 </Db>
